@@ -508,6 +508,12 @@
 		// Hide when clicking or tabbing on any element except the clock, input and addon
 		$doc.on('click.clockpicker.' + this.id + ' focusin.clockpicker.' + this.id, function(e){
 			var target = $(e.target);
+			
+			// Prevent the issue when Clockpicker is inside a Bootstap Modal dialog and
+			// the user clicks either AM or PM button.
+			if (e.type === 'focusin' && target.data('bs.modal'))
+				return;
+			
 			if (target.closest(self.popover).length === 0 &&
 					target.closest(self.addon).length === 0 &&
 					target.closest(self.input).length === 0) {
