@@ -376,7 +376,8 @@
 		hourstep: 1,		// allow to multi increment the hour
 		minutestep: 1,		// allow to multi increment the minute
 		ampmSubmit: false,	// allow submit with AM and PM buttons instead of the minute selection/picker
-		addonOnly: false	// only open on clicking on the input-addon
+		addonOnly: false,	// only open on clicking on the input-addon
+		clickOutsideSubmit: false // submit value when user clicked outside of the widget
 	};
 
 	// Show or hide popover
@@ -510,7 +511,11 @@
 			if (target.closest(self.popover).length === 0 &&
 					target.closest(self.addon).length === 0 &&
 					target.closest(self.input).length === 0) {
-				self.hide();
+				if (self.options.clickOutsideSubmit) {
+					self.done() ;
+				}  else {
+					self.hide();
+				} 
 			}
 		});
 
