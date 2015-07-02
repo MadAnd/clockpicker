@@ -455,7 +455,7 @@
 		this.minutes = Math.round(this.minutes / this.options.minutestep) * this.options.minutestep;
 
 		if (this.options.twelvehour) {
-			var period = (value[1] + '').replace(/\d+/g, '').toLowerCase();
+			var period = (value[1] + '').replace(/[\d\s]+/g, '').toLowerCase();
 			this.amOrPm = this.hours > 12 || period === 'pm' ? 'PM' : 'AM';
 		}
 	};
@@ -733,7 +733,7 @@
 		value = leadingZero(outHours) + value;
 		
 		if (!this.isHTML5 && this.options.twelvehour) {
-			value = value + this.amOrPm;
+			value = value + ' ' + this.amOrPm;
 		}
 		
 		this.input.prop('value', value);

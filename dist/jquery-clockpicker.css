@@ -237,6 +237,9 @@
 .clockpicker-popover .popover-title span {
 	cursor: pointer;
 }
+.clockpicker-popover .clockpicker-span-am-pm {
+    padding-left: 10px;
+}
 .clockpicker-popover .popover-content {
 	background-color: #f8f8f8;
 	padding: 12px;
